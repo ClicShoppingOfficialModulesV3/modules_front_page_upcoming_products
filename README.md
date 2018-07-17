@@ -31,4 +31,4 @@ Implementation:
 
 - Copy the modules_front_page_upcoming_products.json into ClicShopping/Work/Cache/Github (manual installation)
 
-
+![image](https://github.com/ClicShoppingOfficialModulesV3/modules_front_page_upcoming_products/blob/master/ModuleInfosJson/image.png)

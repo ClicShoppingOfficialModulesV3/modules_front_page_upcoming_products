@@ -15,7 +15,7 @@
   "type_module":        "template",
   "dependance":         "",
   "description":        "Allow to display the upcoming products in your store",
-  "image":              "",
+  "image":              "ModuleInfosJson/image.png",
 
   "authors": [
     {

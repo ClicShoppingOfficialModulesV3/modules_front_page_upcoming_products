@@ -1,0 +1,7 @@
+
+ module_front_page_upcoming_products_title = Souhaitez-vous affichez les produits qui arriveront dans un futur proche
+ module_front_page_upcoming_products_description = Souhaitez-vous affichez les produits qui arriveront dans un futur proche ?'
+ module_front_page_upcoming_products_front_title = Prochains arrivages
+ table_heading_upcoming_products = Prochains arrivages
+ table_heading_date_expected =  'Date présumée
+

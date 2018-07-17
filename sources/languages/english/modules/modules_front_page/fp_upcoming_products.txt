@@ -1,0 +1,8 @@
+
+ module_front_page_upcoming_products_title = Do you want to enable the upcoming products ?
+ module_front_page_upcoming_products_description = Do  you want to display the upcoming products ont the front page ?
+ module_front_page_upcoming_products_front_title = Next upcoming
+
+ table_heading_upcoming_products = Upcoming Products
+ table_heading_date_expected = Date Expected
+

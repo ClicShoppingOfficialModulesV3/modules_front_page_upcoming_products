@@ -1,7 +1,7 @@
 {
   "title":		"modules_front_page_upcoming_products",
   "type":      "modules_front_page",
-  "vendor":		 "ClicShopping",
+  "vendor":		 "modules_header",
   "is_free":   "yes",
   "is_core":   "no",
   "website_link_to_sell" : "",

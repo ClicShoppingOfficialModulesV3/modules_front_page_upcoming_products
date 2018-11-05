@@ -71,18 +71,18 @@
           } else {
 
             $Qproducts = $CLICSHOPPING_Db->prepare('select p.products_id,
-                                                 pd.products_name,
-                                                 p.products_date_available as date_expected
-                                           from :table_products p,
-                                                :table_products_description pd
-                                           where to_days(p.products_date_available) >= to_days(now())
-                                           and p.products_id = pd.products_id
-                                           and pd.language_id = :language_id
-                                           and p.products_view = 1
-                                           and p.products_archive = 0
-                                           order by ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_FIELD . ' ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_SORT . '
-                                           limit :limit
-                                         ');
+                                                         pd.products_name,
+                                                         p.products_date_available as date_expected
+                                                   from :table_products p,
+                                                        :table_products_description pd
+                                                   where to_days(p.products_date_available) >= to_days(now())
+                                                   and p.products_id = pd.products_id
+                                                   and pd.language_id = :language_id
+                                                   and p.products_view = 1
+                                                   and p.products_archive = 0                                                   
+                                                   order by ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_FIELD . ' ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_SORT . '
+                                                   limit :limit
+                                                 ');
 
             $Qproducts->bindInt(':language_id', $CLICSHOPPING_Language->getId());
             $Qproducts->bindInt(':limit', MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_MAX_DISPLAY);

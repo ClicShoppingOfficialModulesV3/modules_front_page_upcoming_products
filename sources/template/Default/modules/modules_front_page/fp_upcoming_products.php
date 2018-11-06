@@ -108,7 +108,7 @@
            $upcoming_prods_content .= '<meta itemprop="itemListOrder" content="https://schema.org/ItemListUnordered" />';
 
            do {
-              $upcoming_prods_content .= '<div class="float-md-left">&nbsp;' . HTML::link(CLICSHOPPING::link('index.php', 'Products&Description&products_id=' . $Qproducts->valueInt('products_id')), '<span itemprop="itemListElement"><strong>' . $Qproducts->value('products_name') . '</strong></span>') . '</div>';
+              $upcoming_prods_content .= '<div class="float-md-left">&nbsp;' . HTML::link(CLICSHOPPING::link(null, 'Products&Description&products_id=' . $Qproducts->valueInt('products_id')), '<span itemprop="itemListElement"><strong>' . $Qproducts->value('products_name') . '</strong></span>') . '</div>';
               $upcoming_prods_content .= '<div class="float-md-right">' . DateTime::toShort($Qproducts->value('date_expected')) . '</div>';
               $upcoming_prods_content .= '<div class="clearfix"></div>' . "\n";
            } while ($Qproducts->fetch());

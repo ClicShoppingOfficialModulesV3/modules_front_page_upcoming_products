@@ -42,6 +42,7 @@
       $CLICSHOPPING_Template = Registry::get('Template');
       $CLICSHOPPING_Language = Registry::get('Language');
       $CLICSHOPPING_Category = Registry::get('Category');
+      $CLICSHOPPING_ProductsFunctionTemplate = Registry::get('ProductsFunctionTemplate');
 
       if (CLICSHOPPING::getBaseNameIndex() && !$CLICSHOPPING_Category->getPath()) {
 // Get the module contents to display on the front page
@@ -110,7 +111,9 @@
            $upcoming_prods_content .= '<meta itemprop="itemListOrder" content="https://schema.org/ItemListUnordered" />';
 
            do {
-              $upcoming_prods_content .= '<div class="float-md-left">&nbsp;' . HTML::link(CLICSHOPPING::link(null, 'Products&Description&products_id=' . $Qproducts->valueInt('products_id')), '<span itemprop="itemListElement"><strong>' . $Qproducts->value('products_name') . '</strong></span>') . '</div>';
+             $products_name_url = $CLICSHOPPING_ProductsFunctionTemplate->getProductsUrlRewrited()->getProductNameUrl($Qproducts->valueInt('products_id'));
+
+              $upcoming_prods_content .= '<div class="float-md-left">&nbsp;' . HTML::link($products_name_url, '<span itemprop="itemListElement"><strong>' . $Qproducts->value('products_name') . '</strong></span>') . '</div>';
               $upcoming_prods_content .= '<div class="float-md-right">' . DateTime::toShort($Qproducts->value('date_expected')) . '</div>';
               $upcoming_prods_content .= '<div class="clearfix"></div>' . "\n";
            } while ($Qproducts->fetch());

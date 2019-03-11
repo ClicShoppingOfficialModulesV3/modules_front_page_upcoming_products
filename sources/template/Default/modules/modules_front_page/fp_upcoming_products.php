@@ -46,21 +46,26 @@
 
       if (CLICSHOPPING::getBaseNameIndex() && !$CLICSHOPPING_Category->getPath()) {
 // Get the module contents to display on the front page
-
           if ($CLICSHOPPING_Customer->getCustomersGroupID() != 0) {
-
             $Qproducts = $CLICSHOPPING_Db->prepare('select p.products_id,
                                                            pd.products_name,
                                                            p.products_date_available as date_expected,
                                                            g.customers_group_price
                                                    from :table_products p left join :table_products_groups g on p.products_id = g.products_id,
-                                                        :table_products_description pd
+                                                        :table_products_description pd,
+                                                        :table_products_to_categories p2c,
+                                                        :table_categories c
                                                    where to_days(p.products_date_available) >= to_days(now())
                                                    and p.products_id = pd.products_id
                                                    and pd.language_id = :language_id
                                                    and g.customers_group_id = :customers_group_id
                                                    and g.products_group_view = 1
                                                    and p.products_archive = 0
+                                                   and p.products_id = p2c.products_id
+                                                   and p2c.categories_id = c.categories_id
+                                                   and c.virtual_categories = 0
+                                                   and c.status = 1
+                                                   and (p.customers_group_id = :customers_group_id or p.customers_group_id = 99)
                                                    order by ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_FIELD . '  ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_SORT . '
                                                    limit :limit
                                                   ');
@@ -74,15 +79,22 @@
           } else {
 
             $Qproducts = $CLICSHOPPING_Db->prepare('select p.products_id,
-                                                         pd.products_name,
-                                                         p.products_date_available as date_expected
+                                                           pd.products_name,
+                                                           p.products_date_available as date_expected
                                                    from :table_products p,
                                                         :table_products_description pd
+                                                        :table_products_to_categories p2c,
+                                                        :table_categories c
                                                    where to_days(p.products_date_available) >= to_days(now())
                                                    and p.products_id = pd.products_id
                                                    and pd.language_id = :language_id
                                                    and p.products_view = 1
-                                                   and p.products_archive = 0                                                   
+                                                   and p.products_archive = 0
+                                                   and p.products_id = p2c.products_id
+                                                   and p2c.categories_id = c.categories_id
+                                                   and c.virtual_categories = 0
+                                                   and c.status = 1
+                                                   and (p.customers_group_id = 0 or p.customers_group_id = 99)
                                                    order by ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_FIELD . ' ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_SORT . '
                                                    limit :limit
                                                  ');

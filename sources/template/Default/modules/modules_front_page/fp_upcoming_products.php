@@ -65,7 +65,6 @@
                                                    and p2c.categories_id = c.categories_id
                                                    and c.virtual_categories = 0
                                                    and c.status = 1
-                                                   and (p.customers_group_id = :customers_group_id or p.customers_group_id = 99)
                                                    order by ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_FIELD . '  ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_SORT . '
                                                    limit :limit
                                                   ');
@@ -82,7 +81,7 @@
                                                            pd.products_name,
                                                            p.products_date_available as date_expected
                                                    from :table_products p,
-                                                        :table_products_description pd
+                                                        :table_products_description pd,
                                                         :table_products_to_categories p2c,
                                                         :table_categories c
                                                    where to_days(p.products_date_available) >= to_days(now())
@@ -94,7 +93,6 @@
                                                    and p2c.categories_id = c.categories_id
                                                    and c.virtual_categories = 0
                                                    and c.status = 1
-                                                   and (p.customers_group_id = 0 or p.customers_group_id = 99)
                                                    order by ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_FIELD . ' ' . MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_SORT . '
                                                    limit :limit
                                                  ');
@@ -135,10 +133,10 @@
            $upcoming_prods_content .= '</div>';
            $upcoming_prods_content .= '</div>' . "\n";
            $upcoming_prods_content .= '<!-- Upcoming Products  -->' . "\n";
-        } // end num row
 
 // Add the contents as a module
-        $CLICSHOPPING_Template->addBlock($upcoming_prods_content, $this->group);
+           $CLICSHOPPING_Template->addBlock($upcoming_prods_content, $this->group);
+        } // end num row
       }
     }
 

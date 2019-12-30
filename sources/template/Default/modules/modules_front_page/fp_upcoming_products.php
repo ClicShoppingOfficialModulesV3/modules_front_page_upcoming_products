@@ -13,7 +13,6 @@
   use ClicShopping\OM\Registry;
   use ClicShopping\OM\CLICSHOPPING;
   use ClicShopping\OM\HTML;
-  use ClicShopping\OM\Cache;
 
   class fp_upcoming_products {
     public $code;
@@ -152,10 +151,10 @@
       $CLICSHOPPING_Db = Registry::get('Db');
 
       $CLICSHOPPING_Db->save('configuration', [
-          'configuration_title' => 'Souhaitez-vous activer ce module ?',
+          'configuration_title' => 'Do you want to enable this module ?',
           'configuration_key' => 'MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_STATUS',
           'configuration_value' => 'True',
-          'configuration_description' => 'Souhaitez vous activer ce module à votre boutique ?',
+          'configuration_description' => 'Do you want to enable this module in your shop ?',
           'configuration_group_id' => '6',
           'sort_order' => '1',
           'set_function' => 'clic_cfg_set_boolean_value(array(\'True\', \'False\'))',
@@ -164,10 +163,10 @@
       );
 
       $CLICSHOPPING_Db->save('configuration', [
-          'configuration_title' => 'Veuillez indiquer un ordre de tri d\'affichage des champs',
+          'configuration_title' => 'Veuillez indiquer un Sort order des champs',
           'configuration_key' => 'MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_FIELD',
           'configuration_value' => 'date_expected',
-          'configuration_description' => 'Veuillez indiquer un ordre de tri d\'affichage des champs.<br><br><i>(Valeur date_expected = par date - Valeur products_name = nom du produit)</i>',
+          'configuration_description' => 'Veuillez indiquer un Sort order des champs.<br><br><i>(Valeur date_expected = par date - Valeur products_name = nom du produit)</i>',
           'configuration_group_id' => '6',
           'sort_order' => '2',
           'set_function' => 'clic_cfg_set_boolean_value(array(\'products_name\', \'date_expected\'))',
@@ -176,10 +175,10 @@
       );
 
       $CLICSHOPPING_Db->save('configuration', [
-          'configuration_title' => 'Veuillez indiquer un ordre de tri d\'affichage par colonne',
+          'configuration_title' => 'Veuillez indiquer un Sort order par colonne',
           'configuration_key' => 'MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_SORT',
           'configuration_value' => 'desc',
-          'configuration_description' => 'Veuillez indiquer un ordre de tri d\'affichage par colonne<br><br><i>(Valeur desc = descendant - Valeur asc = ascendant)</i>',
+          'configuration_description' => 'Veuillez indiquer un Sort order par colonne<br><br><i>(Valeur desc = descendant - Valeur asc = ascendant)</i>',
           'configuration_group_id' => '6',
           'sort_order' => '3',
           'set_function' => 'clic_cfg_set_boolean_value(array(\'asc\', \'desc\') ',
@@ -200,10 +199,10 @@
       );
 
       $CLICSHOPPING_Db->save('configuration', [
-          'configuration_title' => 'Ordre de tri d\'affichage',
+          'configuration_title' => 'Sort order',
           'configuration_key' => 'MODULE_FRONT_PAGE_UPCOMING_PRODUCTS_SORT_ORDER',
           'configuration_value' => '150',
-          'configuration_description' => 'Ordre de tri pour l\'affichage (Le plus petit nombre est montré en premier)',
+          'configuration_description' => 'Sort order of display. Lowest is displayed first. The sort order must be different on every module',
           'configuration_group_id' => '6',
           'sort_order' => '5',
           'set_function' => '',

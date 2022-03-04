@@ -16,7 +16,7 @@
 
   class fp_upcoming_products {
     public string $code;
-    public $group;
+    public string $group;
     public $title;
     public $description;
     public ?int $sort_order = 0;
